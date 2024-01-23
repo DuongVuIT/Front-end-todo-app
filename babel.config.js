@@ -7,6 +7,8 @@ module.exports = {
         alias: {
           '@components': './src/components',
           '@utils': './src/utils',
+          '@screens': './src/screens',
+          '@navigation': './src/navigation',
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },

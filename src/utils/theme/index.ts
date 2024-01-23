@@ -7,10 +7,15 @@ const theme = createTheme({
     '1': 4,
     '2': 8,
     '3': 12,
+    '3.5': 14,
     '4': 16,
     '5': 20,
+    '5.5': 22,
     '6': 24,
     '10': 40,
+    '11': 44,
+    '12': 48,
+    '13': 56,
   },
   borderRadii: {
     none: 0,
@@ -24,6 +29,7 @@ const theme = createTheme({
   },
   textVariants: textVariants,
 });
+
 export type Theme = typeof theme;
 
 export const Box = createBox<Theme>();

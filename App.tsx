@@ -1,13 +1,14 @@
-import {StyleSheet, Text, View} from 'react-native';
+import Navigation from '@navigation/index';
+import {ThemeProvider} from '@shopify/restyle';
+import theme from '@utils/theme';
 import React from 'react';
-import Button from '@components/button';
+import {StyleSheet} from 'react-native';
 
 const App = () => {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>App</Text>
-      <Button />
-    </View>
+    <ThemeProvider theme={theme}>
+      <Navigation />
+    </ThemeProvider>
   );
 };
 

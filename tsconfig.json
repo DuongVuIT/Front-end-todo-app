@@ -6,7 +6,11 @@
       "@components/*": ["./src/components/*"],
       "@components": ["./src/components"],
       "@utils/*": ["./src/utils/*"],
-      "@utils": ["./src/utils"]
+      "@utils": ["./src/utils"],
+      "@navigation/*": ["./src/navigation/*"],
+      "@navigation": ["./src/navigation"],
+      "@screens/*": ["./src/screens/*"],
+      "@screens": ["./src/screens"]
     }
   },
   "include": ["./App.tsx", "src/**/*", "src/type/index.d.ts", "custom.d.ts"]
