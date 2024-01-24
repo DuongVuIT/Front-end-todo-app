@@ -3,11 +3,14 @@ import {ThemeProvider} from '@shopify/restyle';
 import theme from '@utils/theme';
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Navigation />
+      <SafeAreaProvider>
+        <Navigation />
+      </SafeAreaProvider>
     </ThemeProvider>
   );
 };
