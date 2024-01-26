@@ -1,7 +1,8 @@
 import Navigation from '@navigation/index';
 import {ThemeProvider} from '@shopify/restyle';
+import useUserGlobalStore from '@store/useUserGlobalStore';
 import theme from '@utils/theme';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 

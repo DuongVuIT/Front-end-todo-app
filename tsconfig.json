@@ -10,7 +10,11 @@
       "@navigation/*": ["./src/navigation/*"],
       "@navigation": ["./src/navigation"],
       "@screens/*": ["./src/screens/*"],
-      "@screens": ["./src/screens"]
+      "@screens": ["./src/screens"],
+      "@store/*": ["./src/store/*"],
+      "@store": ["./src/store"],
+      "@types/*": ["./src/types/*"],
+      "@types": ["./src/types"]
     }
   },
   "include": ["./App.tsx", "src/**/*", "src/type/index.d.ts", "custom.d.ts"]

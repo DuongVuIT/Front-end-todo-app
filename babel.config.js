@@ -9,6 +9,8 @@ module.exports = {
           '@utils': './src/utils',
           '@screens': './src/screens',
           '@navigation': './src/navigation',
+          '@store': './src/store',
+          '@types': './src/types',
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
