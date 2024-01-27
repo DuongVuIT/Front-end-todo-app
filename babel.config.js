@@ -11,6 +11,7 @@ module.exports = {
           '@navigation': './src/navigation',
           '@store': './src/store',
           '@types': './src/types',
+          '@service': './src/service',
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },

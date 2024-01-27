@@ -14,7 +14,9 @@
       "@store/*": ["./src/store/*"],
       "@store": ["./src/store"],
       "@types/*": ["./src/types/*"],
-      "@types": ["./src/types"]
+      "@types": ["./src/types"],
+      "@service": ["./src/service"],
+      "@service/*": ["./src/service/*"]
     }
   },
   "include": ["./App.tsx", "src/**/*", "src/type/index.d.ts", "custom.d.ts"]
