@@ -6,6 +6,7 @@ type IconProps = {
   height?: number;
   width?: number;
 };
+
 type IconName = 'home' | 'completed' | 'categories' | 'calendar';
 const Home = ({color = 'black', height = 20, width = 20}: IconProps) => (
   <Svg width={width} height={height} viewBox="0 0 19 20" fill="none">

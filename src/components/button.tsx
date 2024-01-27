@@ -1,12 +1,40 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Box, Text} from '@utils/theme';
 import React from 'react';
-import {Box} from '@utils/theme';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 
-const Button = () => {
+type ButtonProps = {
+  label: string;
+  onPress?: () => void;
+  onLongPress?: () => void;
+  disabled?: boolean;
+  uppercase?: boolean;
+};
+const Button = ({
+  label,
+  onPress,
+  onLongPress,
+  disabled,
+  uppercase,
+}: ButtonProps) => {
   return (
-    <Box bg="primary" p="4" borderRadius="rounded-3xl">
-      <Text>Button components update</Text>
-    </Box>
+    <TouchableOpacity
+      onPress={onPress}
+      onLongPress={onLongPress}
+      disabled={disabled}>
+      <Box
+        bg={disabled ? 'gray800' : 'primary'}
+        py="3.5"
+        borderRadius="rounded-7xl">
+        <Text
+          variant="textXs"
+          fontWeight="700"
+          color="white"
+          textAlign="center"
+          textTransform={uppercase ? 'uppercase' : 'none'}>
+          {label}
+        </Text>
+      </Box>
+    </TouchableOpacity>
   );
 };
 
