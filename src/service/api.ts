@@ -1,4 +1,4 @@
-import axiosIntance, {saveToken, todo_app_token} from './config';
+import axiosIntance, {saveToken, TODO_TOKEN} from './config';
 
 type RegisterUser = IUser;
 export const registerUser = async ({email, name, password}: RegisterUser) => {
@@ -18,13 +18,13 @@ export const registerUser = async ({email, name, password}: RegisterUser) => {
 type LoginUserTypes = Omit<IUser, 'name'>;
 export const loginUser = async ({email, password}: LoginUserTypes) => {
   try {
-    const response = await axiosIntance.post('user/login', {
+    const response = await axiosIntance.post('/user/login', {
       email,
       password,
     });
     const _token = response.data.token;
     axiosIntance.defaults.headers.common['Authorization'] = _token;
-    saveToken(todo_app_token, _token);
+    saveToken(TODO_TOKEN, _token);
     return response.data.user;
   } catch (error) {
     console.log('error in loginUser', error);

@@ -17,7 +17,7 @@ const useUserGlobalStore = create<IUserGlobalStore>()(
       },
     }),
     {
-      name: 'todo-app',
+      name: 'blossom-application-user-store',
       storage: createJSONStorage(() => AsyncStorage),
     },
   ),
