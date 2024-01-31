@@ -1,13 +1,23 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import Loader from '@components/shared/loader';
 import SafeAreaWrapper from '@components/shared/safe-area-wrapper';
+import {fetcher} from '@service/config';
+import {Box, Text} from '@utils/theme';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import useSWR from 'swr';
 
 const Category = () => {
+  const {data, isLoading, error} = useSWR('categories', fetcher);
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <SafeAreaWrapper>
-      <View>
-        <Text>Category</Text>
-      </View>
+      <Box>
+        <Text variant="textXl" fontWeight="700">
+          Categories
+        </Text>
+      </Box>
     </SafeAreaWrapper>
   );
 };

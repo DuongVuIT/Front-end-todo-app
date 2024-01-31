@@ -13,7 +13,6 @@
       "@screens": ["./src/screens"],
       "@store/*": ["./src/store/*"],
       "@store": ["./src/store"],
-      "@types/*": ["./src/types/*"],
       "@types": ["./src/types"],
       "@service": ["./src/service"],
       "@service/*": ["./src/service/*"]

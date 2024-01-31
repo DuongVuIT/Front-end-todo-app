@@ -5,11 +5,11 @@ import {AuthScreenNavigationType} from '@navigation/types';
 import {useNavigation} from '@react-navigation/native';
 import {loginUser} from '@service/api';
 import useUserGlobalStore from '@store/useUserGlobalStore';
+import {IUser} from '@types';
 import {Box, Text} from '@utils/theme';
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {TouchableOpacity} from 'react-native';
-
 const SignIn = () => {
   const navigation = useNavigation<AuthScreenNavigationType<'SignIn'>>();
   const navigationToSignUp = () => {

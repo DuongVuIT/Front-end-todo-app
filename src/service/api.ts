@@ -1,3 +1,4 @@
+import {IUser} from '@types';
 import axiosIntance, {saveToken, TODO_TOKEN} from './config';
 
 type RegisterUser = IUser;
