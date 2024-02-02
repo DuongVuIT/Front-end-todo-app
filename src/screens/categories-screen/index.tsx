@@ -10,7 +10,9 @@ import CategoryComponent from '@components/category/categories';
 import CreateNewList from '@components/category/create-new-list';
 
 const Categories = () => {
-  const {data, isLoading, error} = useSWR<ICategory[]>('categories/', fetcher);
+  const {data, isLoading, error} = useSWR<ICategory[]>('categories/', fetcher, {
+    refreshInterval: 1000,
+  });
 
   if (isLoading) {
     return <Loader />;

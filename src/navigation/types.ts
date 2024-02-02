@@ -9,6 +9,7 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import {NativeStackNavigationConfig} from '@react-navigation/native-stack/lib/typescript/src/types';
+import {ICategory} from '@types';
 
 export type AuthStackParamList = {
   Welcome: undefined;
@@ -33,7 +34,7 @@ export type CategoriesStackParamList = {
     id: string;
   };
   CreateCategory: {
-    id?: string;
+    category?: ICategory;
   };
 };
 
