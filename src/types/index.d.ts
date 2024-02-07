@@ -35,3 +35,19 @@ interface ICategoryRequest {
   color: IColor;
   icon: IIcon;
 }
+
+interface ITask {
+  _id: string;
+  name: string;
+  isCompleted: boolean;
+  categoryId: string;
+  createdAt: string;
+  date: string;
+}
+
+interface ITaskRequest {
+  name: string;
+  isCompleted: boolean;
+  categoryId: string;
+  date: string;
+}

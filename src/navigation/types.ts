@@ -8,7 +8,6 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import {NativeStackNavigationConfig} from '@react-navigation/native-stack/lib/typescript/src/types';
 import {ICategory} from '@types';
 
 export type AuthStackParamList = {

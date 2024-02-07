@@ -15,25 +15,32 @@ const CategoryComponent = ({category}: CategoryProps) => {
       category: category,
     });
   };
+  const navigateToCategoryScreen = () => {
+    navigation.navigate('Category', {
+      id: category._id,
+    });
+  };
   return (
-    <Box bg="lightGray" p="4" borderRadius="rounded-5xl">
-      <Box
-        flexDirection="row"
-        alignContent="center"
-        justifyContent="space-between">
-        <Box flexDirection="row">
-          <Text variant="textBase" fontWeight="600" mr="3">
-            {category.icon.symbol}
-          </Text>
-          <Text variant="textBase" fontWeight="600">
-            {category.name}
-          </Text>
+    <TouchableOpacity onPress={navigateToCategoryScreen}>
+      <Box bg="lightGray" p="4" borderRadius="rounded-5xl">
+        <Box
+          flexDirection="row"
+          alignContent="center"
+          justifyContent="space-between">
+          <Box flexDirection="row">
+            <Text variant="textBase" fontWeight="600" mr="3">
+              {category.icon.symbol}
+            </Text>
+            <Text variant="textBase" fontWeight="600">
+              {category.name}
+            </Text>
+          </Box>
+          <TouchableOpacity onPress={navigationCreateCategory}>
+            <Icon name="ellipsis-v" size={16} />
+          </TouchableOpacity>
         </Box>
-        <TouchableOpacity onPress={navigationCreateCategory}>
-          <Icon name="ellipsis-v" size={16} />
-        </TouchableOpacity>
       </Box>
-    </Box>
+    </TouchableOpacity>
   );
 };
 
