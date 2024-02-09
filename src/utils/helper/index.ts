@@ -42,3 +42,14 @@ export const getIcons = () => {
   });
   return icons;
 };
+
+export const getGreeting = ({hour}: {hour: number}) => {
+  if (hour < 12) {
+    return 'morning';
+  }
+  if (hour < 18) {
+    return 'evening';
+  } else {
+    return 'night';
+  }
+};

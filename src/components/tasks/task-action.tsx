@@ -23,11 +23,13 @@ const createTaskRequest = async (url: string, {arg}: {arg: ITaskRequest}) => {
     throw error;
   }
 };
-const todaysISODate = new Date().toISOString();
+const todaysISODate = new Date();
+todaysISODate.setHours(0, 0, 0, 0);
+
 const TaskAction = ({categoryId}: TaskActionProp) => {
   const [newTask, setNewTask] = useState<ITaskRequest>({
     categoryId: categoryId,
-    date: todaysISODate,
+    date: todaysISODate.toISOString(),
     isCompleted: false,
     name: '',
   });
@@ -55,7 +57,7 @@ const TaskAction = ({categoryId}: TaskActionProp) => {
         setNewTask({
           categoryId: newTask.categoryId,
           isCompleted: false,
-          date: todaysISODate,
+          date: todaysISODate.toISOString(),
           name: '',
         });
       }
@@ -139,57 +141,51 @@ const TaskAction = ({categoryId}: TaskActionProp) => {
             </Box>
           </TouchableOpacity>
         </Box>
-        {isSelectingCategory && (
-          <Box position="absolute" right={40} bottom={-150}>
-            <FlatList
-              data={categories}
-              renderItem={({item, index}) => {
-                return (
-                  <TouchableOpacity
-                    onPress={() => {
-                      setNewTask(prev => {
-                        return {
-                          ...prev,
-                          categoryId: item._id,
-                        };
-                      });
-                      setIsSelectingCategory(false);
-                    }}>
-                    <Box
-                      bg="gray250"
-                      p="2"
-                      borderTopStartRadius={
-                        index === 0 ? 'rounded-3xl' : 'none'
-                      }
-                      borderTopEndRadius={index === 0 ? 'rounded-3xl' : 'none'}
-                      borderBottomStartRadius={
-                        categories?.length - 1 === index
-                          ? 'rounded-2xl'
-                          : 'none'
-                      }
-                      borderBottomEndRadius={
-                        categories?.length - 1 === index
-                          ? 'rounded-2xl'
-                          : 'none'
-                      }>
-                      <Box flexDirection="row">
-                        <Text>{item.icon.symbol}</Text>
-                        <Text
-                          ml="2"
-                          fontWeight={
-                            newTask.categoryId === item._id ? '700' : '400'
-                          }>
-                          {item.name}
-                        </Text>
-                      </Box>
-                    </Box>
-                  </TouchableOpacity>
-                );
-              }}
-            />
-          </Box>
-        )}
       </Box>
+      {isSelectingCategory && (
+        <Box alignItems="flex-end" my="4" justifyContent="flex-end">
+          <FlatList
+            data={categories}
+            renderItem={({item, index}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    setNewTask(prev => {
+                      return {
+                        ...prev,
+                        categoryId: item._id,
+                      };
+                    });
+                    setIsSelectingCategory(false);
+                  }}>
+                  <Box
+                    bg="gray250"
+                    p="2"
+                    borderTopStartRadius={index === 0 ? 'rounded-3xl' : 'none'}
+                    borderTopEndRadius={index === 0 ? 'rounded-3xl' : 'none'}
+                    borderBottomStartRadius={
+                      categories?.length - 1 === index ? 'rounded-2xl' : 'none'
+                    }
+                    borderBottomEndRadius={
+                      categories?.length - 1 === index ? 'rounded-2xl' : 'none'
+                    }>
+                    <Box flexDirection="row">
+                      <Text>{item.icon.symbol}</Text>
+                      <Text
+                        ml="2"
+                        fontWeight={
+                          newTask.categoryId === item._id ? '700' : '400'
+                        }>
+                        {item.name}
+                      </Text>
+                    </Box>
+                  </Box>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </Box>
+      )}
       {isSelectingDate && (
         <Box>
           <Calendar

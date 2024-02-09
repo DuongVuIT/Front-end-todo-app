@@ -21,14 +21,13 @@ const Category = () => {
     `categories/${id}`,
     fetcher,
   );
-  console.log('category', JSON.stringify(category, null, 2));
-  const {data: tasks, isLoading: isLoadingTask} = useSWR<ITask[]>(
-    `tasks/tasks-by-categories/${id}`,
-    fetcher,
-    {
-      refreshInterval: 1000,
-    },
-  );
+  const {
+    data: tasks,
+    isLoading: isLoadingTask,
+    mutate: mutateTasks,
+  } = useSWR<ITask[]>(`tasks/tasks-by-categories/${id}`, fetcher, {
+    refreshInterval: 1000,
+  });
   if (isLoadingTask || isLoadingCategory || !category || !tasks) {
     return <Loader />;
   }
@@ -57,7 +56,7 @@ const Category = () => {
         <FlatList
           data={tasks}
           renderItem={({item, index}) => {
-            return <TaskComponent task={item} />;
+            return <TaskComponent task={item} mutateTasks={mutateTasks} />;
           }}
           ItemSeparatorComponent={() => <Box height={14} />}
         />
