@@ -12,7 +12,7 @@ import useSWRMutation from 'swr/mutation';
 type TaskActionProp = {
   categoryId: string;
 };
-const today = new Date();
+export const today = new Date();
 const createTaskRequest = async (url: string, {arg}: {arg: ITaskRequest}) => {
   try {
     await axiosIntance.post(url, {

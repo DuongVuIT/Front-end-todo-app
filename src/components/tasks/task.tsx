@@ -1,3 +1,5 @@
+import {HomeScreenNavigationType} from '@navigation/types';
+import {useNavigation} from '@react-navigation/native';
 import axiosIntance from '@service/config';
 import {ITask} from '@types';
 import {Box, Text} from '@utils/theme';
@@ -7,8 +9,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import useSWRMutation from 'swr/mutation';
 type TaskProps = {
   task: ITask;
+  mutateTasks: () => Promise<ITask[] | undefined>;
 };
-
 interface ITaskStatusRequets {
   id: string;
   isCompleted: boolean;
@@ -27,21 +29,29 @@ const toggleTaskStatusRequest = async (
   }
 };
 
-const TaskComponent = ({task}: TaskProps) => {
+const TaskComponent = ({task, mutateTasks}: TaskProps) => {
   const {trigger} = useSWRMutation('tasks/update', toggleTaskStatusRequest);
+  const navigation = useNavigation<HomeScreenNavigationType>();
   const toggleTaskStatus = async () => {
     try {
-      const _updateTask = {
+      const _updatedTask = {
         id: task._id,
         isCompleted: !task.isCompleted,
       };
-      await trigger(_updateTask);
+      await trigger(_updatedTask);
+      await mutateTasks();
     } catch (error) {
-      console.log('error in toggleStatus', error);
+      console.log('error in toggleTaskStatus', error);
+      throw error;
     }
   };
+  const navigateToEditTask = () => {
+    navigation.navigate('EditTask', {
+      task,
+    });
+  };
   return (
-    <Pressable onPress={toggleTaskStatus}>
+    <Pressable onPress={toggleTaskStatus} onLongPress={navigateToEditTask}>
       <Box p="4" bg="lightGray" borderRadius="rounded-5xl" flexDirection="row">
         <Box flexDirection="row" alignItems="center">
           <Box
